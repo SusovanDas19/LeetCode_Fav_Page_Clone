@@ -12,7 +12,7 @@ function QuesDetails({ qName, color, hoverColor, qDifficulty, qDiffColor }) {
         <p className="text-slate-50">{qName}</p>
       </div>
 
-      <div className="flex flex-row gap-4 mr-6 items-center ">
+      <div className="flex flex-row gap-4 mr-6 items-center text-base font-normal">
         <p className={`${qDiffColor}`}>{qDifficulty}</p>
         <TiStarOutline className="opacity-0 group-hover:opacity-100 fill-[#a8a8a8] hover:bg-[#545454] rounded-md p-1 text-3xl"/>
       </div>

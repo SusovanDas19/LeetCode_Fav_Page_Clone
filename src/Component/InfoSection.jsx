@@ -5,6 +5,7 @@ import { FaPlay } from "react-icons/fa";
 import { VscRepoForked } from "react-icons/vsc";
 import { IoMdRefresh } from "react-icons/io";
 import { FcCheckmark } from "react-icons/fc";
+import { useState } from "react";
 
 function InfoSection() {
   return (
@@ -50,15 +51,15 @@ function InfoSection() {
           </div>
           <div className="flex basic-[30%] self-start flex-col gap-3">
             <div className="flex text-slate-200 bg-[#333333] w-24 h-14 items-center justify-center flex-col p-4 rounded-md">
-              <p className="text-[#5dc2c4]">Easy</p>
+              <p className="text-[#4CE9EC]">Easy</p>
               <p>8/8</p>
             </div>
             <div className="flex text-slate-200 bg-[#333333] w-24 h-14 items-center justify-center flex-col p-4 rounded-md">
-              <p className="text-[#e6b03f]	">Med.</p>
+              <p className="text-[#F7B529]	">Med.</p>
               <p>11/11</p>
             </div>
             <div className="flex text-slate-200 bg-[#333333] w-24 h-14 items-center justify-center flex-col p-4 rounded-md">
-              <p className="text-[#e24a41]	">Hard</p>
+              <p className="text-[#F3493F]	">Hard</p>
               <p>2/2</p>
             </div>
           </div>
@@ -69,17 +70,25 @@ function InfoSection() {
 }
 
 const CircularProgressBar = ({
-  percentage = 75,
   size = 170,
   strokeWidth = 6,
-  color = "#429539",
+  colors = ["#4CE9EC", "#F7B529", "#F3493F","#439539"], // Different colors for the segments
 }) => {
   const radius = (size - strokeWidth) / 2;
   const circumference = 2 * Math.PI * radius;
-  const offset = circumference - (percentage / 100) * circumference;
+
+  // Define the lengths for each segment
+  const segment1 = (circumference * 28.57) / 100; // First segment
+  const segment2 = (circumference * 39.28) / 100; // Second segment
+  const segment3 = (circumference * 7.14) / 100; // Third segment
+  const segment4 = (circumference * 74.99) / 100;
+  const [hover, setHover] = useState(false);
 
   return (
-    <div>
+    <div
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+    >
       <svg width={size} height={size} className="-rotate-225">
         <circle
           cx={size / 2}
@@ -89,28 +98,86 @@ const CircularProgressBar = ({
           strokeWidth={strokeWidth}
           fill="none"
         />
-        <circle
-          cx={size / 2}
-          cy={size / 2}
-          r={radius}
-          stroke={color}
-          strokeWidth={strokeWidth}
-          fill="none"
-          strokeDasharray={circumference}
-          strokeDashoffset={offset}
-          strokeLinecap="round"
-        />
+        {hover ? (
+          <>
+            {/* First Segment */}
+            <circle
+              cx={size / 2}
+              cy={size / 2}
+              r={radius}
+              stroke={colors[0]}
+              strokeWidth={strokeWidth}
+              fill="none"
+              strokeDasharray={`${segment1} ${circumference - segment1}`}
+              strokeDashoffset={0}
+              strokeLinecap="round"
+            />
+            {/* Second Segment */}
+            <circle
+              cx={size / 2}
+              cy={size / 2}
+              r={radius}
+              stroke={colors[1]}
+              strokeWidth={strokeWidth}
+              fill="none"
+              strokeDasharray={`${segment2} ${circumference - segment2}`}
+              strokeDashoffset={-segment1}
+              strokeLinecap="round"
+            />
+            {/* Third Segment */}
+            <circle
+              cx={size / 2}
+              cy={size / 2}
+              r={radius}
+              stroke={colors[2]}
+              strokeWidth={strokeWidth}
+              fill="none"
+              strokeDasharray={`${segment3} ${circumference - segment3}`}
+              strokeDashoffset={-(segment1 + segment2)}
+              strokeLinecap="round"
+            />
+          </>
+        ) : (
+          <>
+            <circle
+              cx={size / 2}
+              cy={size / 2}
+              r={radius}
+              stroke={colors[3]}
+              strokeWidth={strokeWidth}
+              fill="none"
+              strokeDasharray={`${segment4} ${circumference - segment4}`}
+              strokeDashoffset={0}
+              strokeLinecap="round"
+            />
+          </>
+        )}
       </svg>
 
       <div className="flex items-center top-1/3 left-1/2 absolute -translate-x-1/2 -translate-y-1/2">
         <div className="flex justify-center items-end">
-          <h1 className="text-4xl font-bold">21</h1>
-          <p>/21</p>
+          {hover ? (
+            <>
+              <h1 className="text-4xl font-bold">73</h1>
+              <p>.93%</p>
+            </>
+          ) : (
+            <>
+              <h1 className="text-4xl font-bold">21</h1>
+              <p>/21</p>
+            </>
+          )}
         </div>
       </div>
       <div className="flex flex-row items-center justify-center absolute top-20 left-10 gap-1">
-        <FcCheckmark />
-        <p>Solved</p>
+        {hover ? (
+          <p>Acceptance</p>
+        ) : (
+          <>
+            <FcCheckmark />
+            <p>Solved</p>
+          </>
+        )}
       </div>
       <div className="flex items-center absolute bottom-4 left-10 w-auto text-[#787878]">
         <p>0 Attempting</p>
