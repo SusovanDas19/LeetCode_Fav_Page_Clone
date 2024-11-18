@@ -6,6 +6,7 @@ import { VscRepoForked } from "react-icons/vsc";
 import { IoMdRefresh } from "react-icons/io";
 import { FcCheckmark } from "react-icons/fc";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 function InfoSection() {
   return (
@@ -72,7 +73,7 @@ function InfoSection() {
 const CircularProgressBar = ({
   size = 170,
   strokeWidth = 6,
-  colors = ["#4CE9EC", "#F7B529", "#F3493F","#439539"], // Different colors for the segments
+  colors = ["#4CE9EC", "#F7B529", "#F3493F", "#439539"], // Different colors for the segments
 }) => {
   const radius = (size - strokeWidth) / 2;
   const circumference = 2 * Math.PI * radius;
@@ -90,64 +91,93 @@ const CircularProgressBar = ({
       onMouseLeave={() => setHover(false)}
     >
       <svg width={size} height={size} className="-rotate-225">
-        <circle
-          cx={size / 2}
-          cy={size / 2}
-          r={radius}
-          stroke="transparent"
-          strokeWidth={strokeWidth}
-          fill="none"
-        />
         {hover ? (
           <>
             {/* First Segment */}
-            <circle
+            <motion.circle
+              initial={{
+                strokeDasharray: `0 ${circumference}`,
+                stroke: "transparent",
+              }}
+              animate={{
+                strokeDasharray: `${segment1} ${circumference - segment1}`,
+                stroke: colors[0],
+              }}
+              transition={{ duration: 0.8, ease: "easeInOut" }}
               cx={size / 2}
               cy={size / 2}
               r={radius}
-              stroke={colors[0]}
               strokeWidth={strokeWidth}
               fill="none"
-              strokeDasharray={`${segment1} ${circumference - segment1}`}
-              strokeDashoffset={0}
               strokeLinecap="round"
+              strokeDashoffset= {0}
             />
             {/* Second Segment */}
-            <circle
+            <motion.circle
+              initial={{
+                strokeDasharray: `0 ${circumference}`,
+                stroke: "transparent",
+              }}
+              animate={{
+                strokeDasharray: `${segment2} ${circumference - segment2}`,
+                stroke: colors[1],
+              }}
+              transition={{ duration: 0.8, delay: 0.2, ease: "easeInOut" }}
               cx={size / 2}
               cy={size / 2}
               r={radius}
-              stroke={colors[1]}
               strokeWidth={strokeWidth}
               fill="none"
-              strokeDasharray={`${segment2} ${circumference - segment2}`}
-              strokeDashoffset={-segment1}
               strokeLinecap="round"
+              strokeDashoffset= {-segment1}
             />
             {/* Third Segment */}
-            <circle
+            <motion.circle
+              initial={{
+                strokeDasharray: `0 ${circumference}`,
+                stroke: "transparent",
+              }}
+              animate={{
+                strokeDasharray: `${segment3} ${circumference - segment3}`,
+               
+                stroke: colors[2],
+              }}
+              transition={{ duration: 0.8, delay: 0.8, ease: "easeInOut" }}
               cx={size / 2}
               cy={size / 2}
               r={radius}
-              stroke={colors[2]}
               strokeWidth={strokeWidth}
               fill="none"
-              strokeDasharray={`${segment3} ${circumference - segment3}`}
-              strokeDashoffset={-(segment1 + segment2)}
               strokeLinecap="round"
+              strokeDashoffset={-(segment1 + segment2)}
+            />
+            <circle
+              transition={{ duration: 0.8, delay: 0.8, ease: "easeInOut" }}
+              cx={size / 2}
+              cy={size / 2}
+              r={radius}
+              stroke="transparent"
+              strokeWidth={strokeWidth}
+              fill="none"
             />
           </>
         ) : (
           <>
-            <circle
+            <motion.circle
+              initial={{
+                strokeDasharray: `0 ${circumference}`,
+              }}
+              animate={{
+                strokeDasharray: `${segment4} ${circumference - segment4}`,
+                strokeDashoffset: 0,
+              }}
+              transition={{ duration: 0.8 }}
               cx={size / 2}
               cy={size / 2}
               r={radius}
-              stroke={colors[3]}
+              stroke= {colors[3]}
               strokeWidth={strokeWidth}
               fill="none"
-              strokeDasharray={`${segment4} ${circumference - segment4}`}
-              strokeDashoffset={0}
               strokeLinecap="round"
             />
           </>
