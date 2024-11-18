@@ -77,8 +77,10 @@ function Checkbox({ label, lableColor }) {
  
   const [filterTag,setFilterTag] = useRecoilState(filterTags)
 
+  const excludedLabels = ["Show tags", "Todo", "Solved", "Attempted"];
+
   function handelChecked(event) {
-    if (event.target.checked && label !== "Show tags") {
+    if (event.target.checked && !excludedLabels.includes(label)) {
       setFilterTag((prev) => [...prev, label]);
     } else {
       setFilterTag((prev) => prev.filter((tag) => tag !== label));

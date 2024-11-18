@@ -7,10 +7,56 @@ import { MdCancel } from "react-icons/md";
 import FilterOpt from "./FilterOpt";
 import QuesDetails from "./QuesDetails";
 
+const questions = {
+  Easy: [
+    "14. Longest Common Prefix",
+    "26. Remove Duplicates from Sorted Array",
+    "20. Valid Parentheses",
+    "83. Remove Duplicates from Sorted List",
+    "232. Implement Queue using Stacks",
+    "144. Binary Tree Preorder Traversal",
+    "125. Valid Palindrome",
+    "121. Best Time to Buy and Sell Stock",
+  ],
+
+  Medium: [
+    "236. Lowest Common Ancestor of a Binary Tree",
+    "142. Linked List Cycle II",
+    "138. Copy List with Random Pointer",
+    "74. Search a 2D Matrix",
+    "54. Spiral Matrix",
+    "48. Rotate Image",
+    "33. Search in Rotated Sorted Array",
+    "19. Remove Nth Node From End of List",
+    "8. String to Integer (atoi)",
+    "6. Zigzag Conversion",
+    "2. Add Two Numbers",
+  ],
+
+  Hard: ["84. Largest Rectangle in Histogram", "25. Reverse Nodes in k-Group"],
+};
+
 function QuestionsPart() {
   const [showFilterOpt, setShowFilterOpt] = useRecoilState(filterOpt);
   const filterTag = useRecoilValue(filterTags);
 
+  const difficultyColorMap = {
+    Easy: "text-[#4CE9EC]",
+    Medium: "text-[#F7B529]",
+    Hard: "text-[#F3493F]",
+  };
+
+  const selectedQuestions = (
+    filterTag.length === 0
+      ? Object.entries(questions)
+      : filterTag.map((difficulty) => [difficulty, questions[difficulty]])
+  ).flatMap(([difficulty, questionArray]) => {
+    return (questionArray || []).map((qName) => ({
+      qName,
+      qDifficulty: difficulty === "Medium" ? "Med." : difficulty,
+      qDiffColor: difficultyColorMap[difficulty],
+    }));
+  });
   return (
     <div className="w-full relative">
       <div className="flex flex-row gap-3">
@@ -36,153 +82,24 @@ function QuestionsPart() {
 
       {/* Questions  */}
       <div className="flex flex-col mt-5">
-        <QuesDetails
-          qName="11. Container With Most Water"
-          color="bg-[#282828]"
-          hoverColor="hover:bg-[#464646]"
-          qDifficulty="Med."
-          qDiffColor="text-[#F7B529]"
-        />
-        <QuesDetails
-          qName="27. Remove element"
-          color="bg-transparent"
-          hoverColor="hover:bg-[#3a3a3a]"
-          qDifficulty="Easy"
-          qDiffColor="text-[#4CE9EC]"
-        />
-        <QuesDetails
-          qName="42. Trapping rain water"
-          color="bg-[#282828]"
-          hoverColor="hover:bg-[#464646]"
-          qDifficulty="Hard"
-          qDiffColor="text-[#F3493F]"
-        />
-        <QuesDetails
-          qName="27. Remove element"
-          color="bg-transparent"
-          hoverColor="hover:bg-[#3a3a3a]"
-          qDifficulty="Easy"
-          qDiffColor="text-[#4CE9EC]"
-        />
-        <QuesDetails
-          qName="42. Trapping rain water"
-          color="bg-[#282828]"
-          hoverColor="hover:bg-[#464646]"
-          qDifficulty="Hard"
-          qDiffColor="text-[#F3493F]"
-        />
-        <QuesDetails
-          qName="27. Remove element"
-          color="bg-transparent"
-          hoverColor="hover:bg-[#3a3a3a]"
-          qDifficulty="Easy"
-          qDiffColor="text-[#4CE9EC]"
-        />
-        <QuesDetails
-          qName="42. Trapping rain water"
-          color="bg-[#282828]"
-          hoverColor="hover:bg-[#464646]"
-          qDifficulty="Hard"
-          qDiffColor="text-[#F3493F]"
-        />
-        <QuesDetails
-          qName="27. Remove element"
-          color="bg-transparent"
-          hoverColor="hover:bg-[#3a3a3a]"
-          qDifficulty="Easy"
-          qDiffColor="text-[#4CE9EC]"
-        />
-        <QuesDetails
-          qName="42. Trapping rain water"
-          color="bg-[#282828]"
-          hoverColor="hover:bg-[#464646]"
-          qDifficulty="Hard"
-          qDiffColor="text-[#F3493F]"
-        />
-        <QuesDetails
-          qName="27. Remove element"
-          color="bg-transparent"
-          hoverColor="hover:bg-[#3a3a3a]"
-          qDifficulty="Easy"
-          qDiffColor="text-[#4CE9EC]"
-        />
-        <QuesDetails
-          qName="42. Trapping rain water"
-          color="bg-[#282828]"
-          hoverColor="hover:bg-[#464646]"
-          qDifficulty="Hard"
-          qDiffColor="text-[#F3493F]"
-        />
-        <QuesDetails
-          qName="27. Remove element"
-          color="bg-transparent"
-          hoverColor="hover:bg-[#3a3a3a]"
-          qDifficulty="Easy"
-          qDiffColor="text-[#4CE9EC]"
-        />
-        <QuesDetails
-          qName="42. Trapping rain water"
-          color="bg-[#282828]"
-          hoverColor="hover:bg-[#464646]"
-          qDifficulty="Hard"
-          qDiffColor="text-[#F3493F]"
-        />
-        <QuesDetails
-          qName="27. Remove element"
-          color="bg-transparent"
-          hoverColor="hover:bg-[#3a3a3a]"
-          qDifficulty="Easy"
-          qDiffColor="text-[#4CE9EC]"
-        />
-        <QuesDetails
-          qName="42. Trapping rain water"
-          color="bg-[#282828]"
-          hoverColor="hover:bg-[#464646]"
-          qDifficulty="Hard"
-          qDiffColor="text-[#F3493F]"
-        />
-        <QuesDetails
-          qName="27. Remove element"
-          color="bg-transparent"
-          hoverColor="hover:bg-[#3a3a3a]"
-          qDifficulty="Easy"
-          qDiffColor="text-[#4CE9EC]"
-        />
-        <QuesDetails
-          qName="42. Trapping rain water"
-          color="bg-[#282828]"
-          hoverColor="hover:bg-[#464646]"
-          qDifficulty="Hard"
-          qDiffColor="text-[#F3493F]"
-        />
-        <QuesDetails
-          qName="27. Remove element"
-          color="bg-transparent"
-          hoverColor="hover:bg-[#3a3a3a]"
-          qDifficulty="Easy"
-          qDiffColor="text-[#4CE9EC]"
-        />
-        <QuesDetails
-          qName="42. Trapping rain water"
-          color="bg-[#282828]"
-          hoverColor="hover:bg-[#464646]"
-          qDifficulty="Hard"
-          qDiffColor="text-[#F3493F]"
-        />
-        <QuesDetails
-          qName="27. Remove element"
-          color="bg-transparent"
-          hoverColor="hover:bg-[#3a3a3a]"
-          qDifficulty="Easy"
-          qDiffColor="text-[#4CE9EC]"
-        />
-        <QuesDetails
-          qName="42. Trapping rain water"
-          color="bg-[#282828]"
-          hoverColor="hover:bg-[#464646]"
-          qDifficulty="Hard"
-          qDiffColor="text-[#F3493F]"
-        />
+        {selectedQuestions.map((question, index) => {
+          const isEven = index % 2 === 0;
+          const color = isEven ? "bg-[#282828]" : "bg-transparent";
+          const hoverColor = isEven
+            ? "hover:bg-[#464646]"
+            : "hover:bg-[#3a3a3a]";
+
+          return (
+            <QuesDetails
+              key={index}
+              qName={question.qName}
+              color={color}
+              hoverColor={hoverColor}
+              qDifficulty={question.qDifficulty}
+              qDiffColor={question.qDiffColor}
+            />
+          );
+        })}
       </div>
     </div>
   );

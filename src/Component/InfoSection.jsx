@@ -100,14 +100,16 @@ const CircularProgressBar = ({
   const circumference = 2 * Math.PI * radius;
 
   // Define the lengths for each segment
-  const segment1 = (circumference * 28.57) / 100; // First segment
+  const segment1 = ((circumference * 28.57) / 100); // First segment
   const segment2 = (circumference * 39.28) / 100; // Second segment
   const segment3 = (circumference * 7.14) / 100; // Third segment
   const segment4 = (circumference * 74.99) / 100;
+
   const [hover, setHover] = useState(false);
   const easyHover = useRecoilValue(easyHoverAtom);
   const medHover = useRecoilValue(medHoverAtom);
   const hardHover = useRecoilValue(hardHoverAtom);
+  const gap = 10;
 
   return (
     <div
@@ -126,7 +128,7 @@ const CircularProgressBar = ({
                     stroke: "transparent",
                   }}
                   animate={{
-                    strokeDasharray: `${segment1} ${circumference - segment1}`,
+                    strokeDasharray: `${segment1} ${circumference - segment1-gap}`,
                     stroke: colors[0],
                   }}
                   transition={{ duration: 0.8, ease: "easeInOut" }}
@@ -137,6 +139,7 @@ const CircularProgressBar = ({
                   fill="none"
                   strokeLinecap="round"
                   strokeDashoffset={0}
+            
                 />
                 {/* Second Segment */}
                 <motion.circle
@@ -145,7 +148,7 @@ const CircularProgressBar = ({
                     stroke: "transparent",
                   }}
                   animate={{
-                    strokeDasharray: `${segment2} ${circumference - segment2}`,
+                    strokeDasharray: `${segment2} ${circumference - segment2 - gap}`,
                     stroke: colors[1],
                   }}
                   transition={{ duration: 0.8, delay: 0.2, ease: "easeInOut" }}
@@ -155,7 +158,7 @@ const CircularProgressBar = ({
                   strokeWidth={strokeWidth}
                   fill="none"
                   strokeLinecap="round"
-                  strokeDashoffset={-segment1}
+                  strokeDashoffset={-(segment1+gap)}
                 />
                 {/* Third Segment */}
                 <motion.circle
@@ -164,7 +167,7 @@ const CircularProgressBar = ({
                     stroke: "transparent",
                   }}
                   animate={{
-                    strokeDasharray: `${segment3} ${circumference - segment3}`,
+                    strokeDasharray: `${segment3} ${circumference - segment3 - gap}`,
                     stroke: colors[2],
                   }}
                   transition={{ duration: 0.8, delay: 0.8, ease: "easeInOut" }}
@@ -174,7 +177,7 @@ const CircularProgressBar = ({
                   strokeWidth={strokeWidth}
                   fill="none"
                   strokeLinecap="round"
-                  strokeDashoffset={-(segment1 + segment2)}
+                  strokeDashoffset={-(segment1 + segment2 + 2*gap)}
                 />
               </>
             ) : (
@@ -187,7 +190,7 @@ const CircularProgressBar = ({
                     strokeDasharray: `${segment4} ${circumference - segment4}`,
                     strokeDashoffset: 0,
                   }}
-                  transition={{ duration: 0.5 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
                   cx={size / 2}
                   cy={size / 2}
                   r={radius}
@@ -371,7 +374,7 @@ const CircularProgressBar = ({
           </>
         )}
       </motion.div>
-      <div className="flex items-center absolute bottom-4 left-10 w-auto text-[#787878]">
+      <div className="flex items-center absolute bottom-4 left-9 w-auto text-[#787878]">
         <p>0 Attempting</p>
       </div>
     </div>
