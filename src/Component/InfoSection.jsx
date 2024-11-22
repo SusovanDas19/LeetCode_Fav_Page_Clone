@@ -19,7 +19,7 @@ function InfoSection() {
   const setMedHover = useSetRecoilState(medHoverAtom);
   const setHardHover = useSetRecoilState(hardHoverAtom);
   return (
-    <div className="flex flex-col gap-2.5 rounded-xl justify-center items-center bg-[#262626] w-96 h-[550px] ml-14">
+    <div className="flex flex-col gap-2.5 rounded-xl justify-center items-center bg-[#262626] lg:w-96 sm:w-full h-[550px] lg:ml-14 sm:ml-0">
       <div className="flex items-start gap-2.5 self-start flex-col mx-6">
         <div className="bg-white h-20 w-20 flex justify-center items-center rounded">
           <MdOutlineStarPurple500 className="fill-[#f2b04f] text-6xl" />
