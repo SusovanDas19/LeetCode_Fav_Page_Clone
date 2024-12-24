@@ -81,7 +81,7 @@ function QuestionsPart() {
       </div>
 
       {/* Questions  */}
-      <div className="flex flex-col mt-5">
+      <div className="flex flex-col mt-5 gap-4">
         {selectedQuestions.map((question, index) => {
           const isEven = index % 2 === 0;
           const color = isEven ? "bg-[#282828]" : "bg-transparent";
@@ -97,6 +97,7 @@ function QuestionsPart() {
               hoverColor={hoverColor}
               qDifficulty={question.qDifficulty}
               qDiffColor={question.qDiffColor}
+              className="w-full sm:w-11/12 lg:w-4/5 mx-0 sm:mx-2"
             />
           );
         })}

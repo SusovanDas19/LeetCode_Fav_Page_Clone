@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 function Sidebar() {
   const [showSidebar, setShowSidebar] = useRecoilState(sidebarAtom);
   return (
-    <div className="h-full w-full">
+    <div className={`h-full w-full ${showSidebar ? 'fixed z-50' : 'relative'} sm:relative`}>
       {showSidebar ? (
         <>
           <motion.div

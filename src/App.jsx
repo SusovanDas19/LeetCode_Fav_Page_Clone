@@ -11,11 +11,11 @@ function App() {
         <div className="min-h-screen lg:w-fit sm:w-full sm:z-50">
           <Sidebar />
         </div>
-        <div className="h-full w-11/12 flex flex-col sm:flex-col lg:flex-row mx-6">
-          <div className="flex h-full w-full items-center justify-center lg:w-1/4 sm:w-full mt-20 top-10 lg:sticky sm:static">
+        <div className="h-full w-full flex flex-col sm:flex-col lg:flex-row mx-6">
+          <div className="flex h-full w-full items-center justify-center lg:w-1/4 sm:w-full mt-20 top-10 lg:sticky sm:static sm:mx-auto">
             <InfoSection />
           </div>
-          <div className="flex w-full lg:w-3/4 sm:w-full mt-20 lg:ml-44 sm:ml-0 justify-start">
+          <div className="flex w-full lg:w-3/4 sm:w-full mt-20 lg:ml-44 sm:ml-0 justify-start sm:mx-auto">
             <QuestionsPart />
           </div>
         </div>
