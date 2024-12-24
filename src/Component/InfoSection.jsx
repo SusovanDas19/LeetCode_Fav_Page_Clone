@@ -94,12 +94,12 @@ function InfoSection() {
 const CircularProgressBar = ({
   size = 170,
   strokeWidth = 6,
-  colors = ["#4CE9EC", "#F7B529", "#F3493F", "#439539"], // Different colors for the segments
+  colors = ["#4CE9EC", "#F7B529", "#F3493F", "#439539"],
 }) => {
   const radius = (size - strokeWidth) / 2;
   const circumference = 2 * Math.PI * radius;
 
-  // Define the lengths for each segment
+  
   const segment1 = ((circumference * 28.57) / 100); // First segment
   const segment2 = (circumference * 39.28) / 100; // Second segment
   const segment3 = (circumference * 7.14) / 100; // Third segment

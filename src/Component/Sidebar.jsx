@@ -26,7 +26,7 @@ function Sidebar() {
               <div
                 className="cursor-pointer flex items-center justify-center  "
                 onClick={() => {
-                  setShowSidebar(false); //this is not working, the div is not cursor pointer showing
+                  setShowSidebar(false);
                 }}
               >
                 <PiSidebarFill

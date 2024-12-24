@@ -1,6 +1,4 @@
-import { useState } from "react";
 import { FaFilter } from "react-icons/fa6";
-import { motion } from "framer-motion";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { filterOpt, filterTags } from "../atoms/filterTag";
 import { MdCancel } from "react-icons/md";
