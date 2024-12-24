@@ -1,12 +1,18 @@
-<<<<<<< HEAD
-# LeetCode_Fav_Page_Clone
-=======
-# React + Vite
+# LeetCode Favorite Page Clone
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a clone of the LeetCode Favorite Page designed to improve Tailwindcss skills and explore React-based web development.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
->>>>>>> d99a067 (Add version 1 of leetcode clon)
+## 🚀 Tech Stack
+
+[![My Skills](https://skillicons.dev/icons?i=react,tailwind,vite,javascript&perline=6&theme=dark)](https://skillicons.dev)  
+![Framer Motion](https://img.shields.io/badge/Framer_Motion-00C8A7?style=flat&logo=framer&logoColor=white)
+
+---
+
+## 🔧 Features
+
+- 🔍 **Filter Functionality**: Quickly find questions based on difficulties.
+- 🌟 **Modern Design**: Minimalist and responsive UI using TailwindCSS.
+- 🎬 **Smooth Animations**: Dynamic interactions powered by Framer Motion.
