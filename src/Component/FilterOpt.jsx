@@ -31,7 +31,7 @@ function FilterOpt() {
   }
   return (
     <motion.div
-      className="bg-[#333333] h-72 w-72 rounded-md border border-[#484848]"
+      className="bg-[#333333] h-72 w-72 sm:w-80 rounded-md border border-[#484848]"
       ref={filterOptRef}
       initial={{ opacity: 0, scale: 0.5 }}
       animate={{ opacity: 1, scale: 1 }}

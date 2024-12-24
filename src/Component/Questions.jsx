@@ -62,7 +62,7 @@ function QuestionsPart() {
       <div className="flex flex-row gap-3">
         <div className="w-20 h-8 rounded-full border-x border-y bg-transparent hover:bg-[#1e1d1d] border-[#383737]">
           <button
-            className={`w-full h-full flex flex-row gap-2 font-medium justify-center text-[#7b7a7a] items-center`}
+            className="w-full h-full flex flex-row gap-2 font-medium justify-center text-[#7b7a7a] items-center"
             onClick={() => {
               setShowFilterOpt((curr) => !curr);
             }}

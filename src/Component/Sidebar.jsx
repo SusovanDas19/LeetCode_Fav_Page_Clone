@@ -12,7 +12,7 @@ function Sidebar() {
       {showSidebar ? (
         <>
           <motion.div
-            className=" flex h-full flex-col z-50 w-56 border-r justify-center border-[#484747] bg-[#333333] relative"
+            className=" flex h-full flex-col z-50 w-56 sm:w-64 border-r justify-center border-[#484747] bg-[#333333] relative"
             initial={{ x: "-100%" }}
             animate={{ x: 0 }} 
             exit={{ x: "-100%", opacity: 0 }}
